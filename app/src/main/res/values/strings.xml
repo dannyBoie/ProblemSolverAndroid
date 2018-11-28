@@ -5,4 +5,7 @@
     <string name="app_intro_message">Welcome to the Problem Solver! Choose which problem you would like to solve below.</string>
     <string name="fwgc_intro_text">A farmer and his wolf, goat, and cabbage come to the edge of a river they wish to cross. There is a boat at the river’s edge that only the farmer can row. The farmer can take at most one other object besides himself on a crossing, but if the wolf is left with the goat, the wolf will eat the goat. Similarly if the goat is ever left alone with the cabbage, the goat will eat the cabbage. Devise a sequence of crossings of the river so that all four characters arrive safely on the other side.</string>
     <string name="begin">Begin</string>
+    <string name="puzzle_intro_message">A puzzle with 8 characters are shown out of place. Put them back in place in the least amount of moves possible. Shown below is the goal state.</string>
+    <string name="fwgc_intro">The Farmer, Wolf, Goat, Cabbage Problem</string>
+    <string name="puzzle_intro">The 8-Puzzle Problem</string>
 </resources>
