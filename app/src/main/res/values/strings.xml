@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Problem Solver 2.0</string>
+    <string name="fwgc_button">FWGC Problem</string>
+    <string name="puzzle_button">8 Puzzle Problem</string>
+    <string name="app_intro_message">Welcome to the Problem Solver! Choose which problem you would like to solve below.</string>
+    <string name="fwgc_intro_text">A farmer and his wolf, goat, and cabbage come to the edge of a river they wish to cross. There is a boat at the river’s edge that only the farmer can row. The farmer can take at most one other object besides himself on a crossing, but if the wolf is left with the goat, the wolf will eat the goat. Similarly if the goat is ever left alone with the cabbage, the goat will eat the cabbage. Devise a sequence of crossings of the river so that all four characters arrive safely on the other side.</string>
+    <string name="begin">Begin</string>
+</resources>
