@@ -8,4 +8,12 @@
     <string name="puzzle_intro_message">A puzzle with 8 characters are shown out of place. Put them back in place in the least amount of moves possible. Shown below is the goal state.</string>
     <string name="fwgc_intro">The Farmer, Wolf, Goat, Cabbage Problem</string>
     <string name="puzzle_intro">The 8-Puzzle Problem</string>
+    <string name="solve">Solve</string>
+    <string name="reset">Reset</string>
+    <string name="next">Next</string>
+    <string name="fwgc_moves">Farmer Takes:</string>
+    <string name="farmer">Farmer</string>
+    <string name="wolf">Wolf</string>
+    <string name="goat">Goat</string>
+    <string name="cabbage">Cabbage</string>
 </resources>
