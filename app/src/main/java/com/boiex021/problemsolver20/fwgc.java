@@ -12,10 +12,11 @@ import java.util.List;
 import domains.farmer.FarmerMover;
 import domains.farmer.FarmerState;
 import framework.problem.State;
+import framework.solution.SolvingAssistant;
 
 public class fwgc extends AppCompatActivity {
 
-    TextView textView;
+    TextView textView = null;
     Button farmerButton;
     Button wolfButton;
     Button goatButton;
@@ -31,11 +32,8 @@ public class fwgc extends AppCompatActivity {
                                         "East",
                                         "East");
 
-    FarmerMover mover;
-//    List<String> moveNames = mover.getMoveNames();
 
-//    int duration = Toast.LENGTH_SHORT;
-//    Toast errToast = Toast.makeText(getApplicationContext(), "Illegal Move", duration);
+    SolvingAssistant solver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,72 +47,35 @@ public class fwgc extends AppCompatActivity {
         farmerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView.setText(farmerChangeString());
+
+                String testString = farmerChangeString();
+                if(testString != null) {
+                    textView.setText(testString);
+                }
             }
         });
-
-//        wolfButton = findViewById(R.id.button9);
-//        wolfButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                textView.setText(wolfChangeString());
-//            }
-//        });
-//
-//        goatButton = findViewById(R.id.button10);
-//        goatButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                textView.setText(goatChangeString());
-//            }
-//        });
-//
-//        cabbageButton = findViewById(R.id.button11);
-//        cabbageButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                textView.setText(cabbageChangeString());
-//            }
-//        });
     }
 
     //helper methods
 
+//    public  void goesAlone(View view) {
+//        TextView displayState = findViewById(R.id.textView9);
+//        TextView message1 = findViewById(R.id.textView7);
+////        TextView numCount1 = findViewById();
+//        solver.tryMove("Goes Alone");
+//        if (!solver.isMoveLegal()) {
+//            String message = "Invalid Move. Try Again";
+//        } else if (problem.success())
+//    }
+
     public String farmerChangeString() {
 
-        String returnString = problem.toString();
-
-        
-
+        String returnString = null;
+        if(solver.isMoveLegal()) {
+            solver.tryMove("FARMER");
+        }
         return returnString;
     }
-
-//    public String wolfChangeString() {
-//
-//        //errToast.show();
-//        String returnString = problem.toString();
-//
-//        return returnString;
-//    }
-//
-//    public String goatChangeString() {
-//
-//        //errToast.show();
-//        String returnString = problem.toString();
-//
-//        return returnString;
-//    }
-//
-//    public String cabbageChangeString() {
-//
-//        //errToast.show();
-//        String returnString = problem.toString();
-//
-//        return returnString;
-//    }
-
-
-
 }
 
 
