@@ -16,4 +16,6 @@
     <string name="wolf">Wolf</string>
     <string name="goat">Goat</string>
     <string name="cabbage">Cabbage</string>
+    <string name="errorMessage">Illegal Move. Try Again.</string>
+    <string name="congrats">Congratulations! You\'ve Solved the Problem!</string>
 </resources>
