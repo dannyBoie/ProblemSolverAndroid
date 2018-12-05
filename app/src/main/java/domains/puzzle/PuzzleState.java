@@ -148,4 +148,33 @@ public class PuzzleState implements State {
         }
         return dest;
     }
+
+    public int getHueristic(State goal) {
+        return sumManhattan(this, goal);
+    }
+
+    public static int sumManhattan(State current, State goal) {
+        int sum = 0;
+
+        PuzzleState curr = (PuzzleState)current;
+        PuzzleState fin = (PuzzleState)goal;
+
+        int currTiles[][] = curr.getTiles();
+        int finTiles[][] = fin.getTiles();
+
+        for(int r = 0; r < currTiles.length; r++) {
+            for(int c = 0; c < currTiles[0].length; c++) {
+                if(currTiles[r][c] != 0) {
+                    Location currLoc = curr.getLocation(currTiles[r][c]);
+                    Location finLoc = fin.getLocation(currTiles[r][c]);
+                    sum += Math.abs(currLoc.getRow() - finLoc.getRow());
+                    sum += Math.abs(currLoc.getColumn() - finLoc.getColumn());
+                }
+            }
+        }
+
+        return sum;
+    }
+
+
 }

@@ -1,33 +1,32 @@
 package com.boiex021.problemsolver20;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
-import domains.farmer.FarmerMover;
 import domains.farmer.FarmerProblem;
-import domains.farmer.FarmerState;
 import framework.problem.Mover;
 import framework.problem.State;
-import framework.solution.SolvingAssistant;
+import framework.solution.AStarSolver;
+import framework.solution.Solver;
 
 public class fwgc extends AppCompatActivity {
 
     FarmerProblem problem;
-    SolvingAssistant solver;
     Mover mover;
     List<String> moveNames;
     String farmerMove;
     TextView stateText;
     TextView errMessage;
     TextView congratMessage;
+    AStarSolver solver;
+    TextView solutionText;
+    boolean solved;
 
 
     @Override
@@ -42,10 +41,13 @@ public class fwgc extends AppCompatActivity {
         errMessage = findViewById(R.id.textView7);
         congratMessage = findViewById(R.id.textView10);
 
-        solver = new SolvingAssistant(problem);
         mover = problem.getMover();
         moveNames = mover.getMoveNames();
         farmerMove = moveNames.get(0);
+
+        solver = new AStarSolver(problem);
+        solutionText = findViewById(R.id.textView11);
+        solved = false;
 
 
     }
@@ -118,9 +120,31 @@ public class fwgc extends AppCompatActivity {
     }
 
     public void resetOnClick(View view) {
+        problem.setCurrentState(problem.getInitialState());
         stateText.setText(problem.getInitialState().toString());
         errMessage.setText(" ");
         congratMessage.setText(" ");
+        solutionText.setText(" ");
+        solved = false;
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void solveOnClick(View view) {
+        solved = true;
+        solver.solve();
+        solver.getSolution().next();
+        solutionText.setText(solver.getStatistics().toString());
+    }
+
+    public void nextOnClick(View view) {
+        if(solved) {
+        stateText.setText(solver.getSolution().next().toString());
+            if(stateText.getText().equals(problem.getFinalState().toString())) {
+              congratMessage.setText(R.string.congrats);
+              solved = false;
+          }
+        }
     }
 }
 

@@ -18,4 +18,11 @@
     <string name="cabbage">Cabbage</string>
     <string name="errorMessage">Illegal Move. Try Again.</string>
     <string name="congrats">Congratulations! You\'ve Solved the Problem!</string>
+    <string name="puzzleIntroGoal">  +---+---+---+\n
+                                | 1 | 2 | 3 |\n
+                                +---+---+---+\n
+                                | 8 |     | 4 |\n
+                                +---+---+---+\n
+                                | 7 | 6 | 5 |\n
+                                +---+---+---+</string>
 </resources>

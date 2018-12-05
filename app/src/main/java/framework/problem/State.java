@@ -23,4 +23,6 @@ public interface State {
     @Override
     String toString();
 
+    default int getHeuristic(State goal) { return 0; }
+
 }

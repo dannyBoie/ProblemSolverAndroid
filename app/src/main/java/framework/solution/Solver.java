@@ -1,5 +1,8 @@
 package framework.solution;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+
 import framework.graph.Vertex;
 import framework.problem.Problem;
 import framework.problem.State;
@@ -85,6 +88,7 @@ public abstract class Solver {
      * If successful, a solution object is constructed and
      * statistics are recorded.
      */
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void solve() {
         Vertex current = new Vertex(problem.getCurrentState());
         Date before = new Date();
@@ -124,6 +128,7 @@ public abstract class Solver {
 
     /* private methods and fields follow */
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private Vertex search(Vertex start) {
         start.setDistance(0);
         start.setPredecessor(null);
