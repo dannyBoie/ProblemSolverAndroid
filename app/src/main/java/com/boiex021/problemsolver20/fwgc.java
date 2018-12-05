@@ -7,75 +7,61 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 import domains.farmer.FarmerMover;
+import domains.farmer.FarmerProblem;
 import domains.farmer.FarmerState;
+import framework.problem.Mover;
 import framework.problem.State;
 import framework.solution.SolvingAssistant;
 
 public class fwgc extends AppCompatActivity {
 
-    TextView textView = null;
-    Button farmerButton;
-    Button wolfButton;
-    Button goatButton;
-    Button cabbageButton;
+    FarmerState initial = new FarmerState("West",
+                                        "West",
+                                        "West",
+                                        "West");
 
+    TextView initialText;
 
-    FarmerState problem = new FarmerState("West",
-                                          "West",
-                                          "West",
-                                          "West");
-    FarmerState goal = new FarmerState( "East",
-                                        "East",
-                                        "East",
-                                        "East");
-
-
+    FarmerProblem problem;
     SolvingAssistant solver;
+    Mover mover;
+    List<String> moveNames;
+    String farmerMove;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fwgc);
 
-        textView = findViewById(R.id.textView9);
-        textView.setText(problem.toString());
+        initialText.setText(initial.toString());
 
-        farmerButton = findViewById(R.id.button8);
-        farmerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        problem = new FarmerProblem();
+        solver = new SolvingAssistant(problem);
+        mover = problem.getMover();
+        moveNames = mover.getMoveNames();
+        farmerMove = moveNames.get(0);
 
-                String testString = farmerChangeString();
-                if(testString != null) {
-                    textView.setText(testString);
-                }
-            }
-        });
+
     }
 
-    //helper methods
+    //helper method
 
-//    public  void goesAlone(View view) {
-//        TextView displayState = findViewById(R.id.textView9);
-//        TextView message1 = findViewById(R.id.textView7);
-////        TextView numCount1 = findViewById();
-//        solver.tryMove("Goes Alone");
-//        if (!solver.isMoveLegal()) {
-//            String message = "Invalid Move. Try Again";
-//        } else if (problem.success())
-//    }
+    public void farmerOnClick(View view) {
+        TextView toStringView = findViewById(R.id.textView9);
 
-    public String farmerChangeString() {
-
-        String returnString = null;
+        solver.tryMove(farmerMove);
         if(solver.isMoveLegal()) {
-            solver.tryMove("FARMER");
+            toStringView.setText(problem.getCurrentState().toString());
         }
-        return returnString;
+
     }
+
 }
 
 
